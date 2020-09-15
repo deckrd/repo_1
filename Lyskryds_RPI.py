@@ -96,7 +96,7 @@ def EV(x):
         EVred.on()
         EVyellow.on()
         sleep(2)
-        crash()
+        #crash()
         return EV_green(x)
 
 def EV_green(x):
@@ -109,7 +109,7 @@ def EV_green(x):
         EVyellow.off()
         EVgreen.on()
         sleep(2)
-        crash()
+        #crash()
         return EV_yellow(x)
 
 def EV_yellow(x):
@@ -121,24 +121,52 @@ def EV_yellow(x):
         EVgreen.off()
         EVyellow.on()
         sleep(2)
-        crash()
+        #crash()
         return redred(x)
 
-def crash():                 #chance for grøn/grøn
-    global count
-    if count > random.randrange(1, 10):
-        EVred.off()
-        EVyellow.off()
-        EVgreen.on()
-        NSred.off()
-        NSyellow.off()
-        NSgreen.on()
-        sleep(2)
-        count = 0
-        return redred("NS")
+#def crash():                 #chance for grøn/grøn
+    #global count
+    #if count > random.randrange(1, 10):
+        #EVred.off()
+        #EVyellow.off()
+        #EVgreen.on()
+        #NSred.off()
+        #NSyellow.off()
+        #NSgreen.on()
+        #sleep(2)
+        #count = 0
+        #return redred("NS")
     
     
 count = 0
 state=redred(x="EV")
 while state: state=redred(x="EV")
 
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Copyright (c) 2017 RS Components Ltd
+# SPDX-License-Identifier: MIT License
+
+"""
+Read ADC channel A1 and print volts out.
+"""
+
+from DesignSpark.Pmod.HAT import createPmod
+import time
+
+if __name__ == '__main__':
+    adc = createPmod('AD1','JBA')
+    time.sleep(0.1)
+    
+    try:
+        while True:
+            volts = adc.readA1Volts()
+            print(volts)
+            #val = adc.readA1()
+            #print(val)
+            time.sleep(0.8)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        adc.cleanup()

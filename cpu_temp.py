@@ -11,7 +11,7 @@ def thermometer(channel):
     try:
         #callableculate CPU temperature of Raspberry Pi in Degrees C
         temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1e3 # Get Raspberry Pi CPU temp
-        params= channel.update({'field1': temp})
+        params= channel.update({'field3': temp})
         print(temp)
                 #print response.status, response.reason
 
