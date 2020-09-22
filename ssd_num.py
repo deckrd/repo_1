@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 import time
 from DesignSpark.Pmod.HAT import createPmod
-import therm1
 
 therm = createPmod("TC1", "JBA")
 
@@ -131,17 +130,19 @@ def ssd_number(x,y) :
         GPIO.output(cat, 0)
     if y == "l" :
         GPIO.output(cat, 1)
-        
-#for i in [0,1,2,3,4,5,6,7,8,9,] :
-    #ssd_number(i)
+    
 
-
-while True :
-    cel = round(therm.readCelcius())
-    cel = str(cel)
-    ssd_number(cel[0],"l")
-    time.sleep(0.01)
-    ssd_number(cel[1],"r")
-    time.sleep(0.01)
-    continue
+try:
+    while True :
+        cel = round(therm.readCelcius())
+        cel = str(cel)
+        ssd_number(cel[0],"l")
+        time.sleep(0.01)
+        ssd_number(cel[1],"r")
+        time.sleep(0.01)
+        continue
+except:
+    print("Error on SSD.")
+finally:
+    RPIO.cleanup()
 
