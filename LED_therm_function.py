@@ -1,13 +1,11 @@
-if __name__ == "__main__" :
+import RPi.GPIO as GPIO
+import time
+from DesignSpark.Pmod.HAT import createPmod
 
-    import RPi.GPIO as GPIO
-    import time
-    from DesignSpark.Pmod.HAT import createPmod
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
 
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-
-    therm = createPmod("TC1", "JBA")
+therm = createPmod("TC1", "JBA")
 
 red = 21
 yellow = 20
@@ -41,3 +39,6 @@ def LED_therm() :
 
     finally:
         GPIO.cleanup()
+
+while True:
+    LED_therm()

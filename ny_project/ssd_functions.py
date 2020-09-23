@@ -1,11 +1,18 @@
-
-
 import RPi.GPIO as GPIO
 import time
 from DesignSpark.Pmod.HAT import createPmod
 
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
+
+red = 21
+yellow = 20
+green = 16
+
+GPIO.setup(red, GPIO.OUT)
+GPIO.setup(yellow, GPIO.OUT)
+GPIO.setup(green, GPIO.OUT)
 
 aa = 4
 ab = 17
@@ -26,16 +33,6 @@ GPIO.setup(ag, GPIO.OUT)
 GPIO.setup(cat, GPIO.OUT)
 
 def ssd_number(x,y) :
-    if x == " " :
-        GPIO.output(cat,1)
-        GPIO.output(aa, 0)
-        GPIO.output(ab, 0)
-        GPIO.output(ac, 0)
-        GPIO.output(ad, 0)
-        GPIO.output(ae, 0)
-        GPIO.output(af, 0)
-        GPIO.output(ag, 0)
-        time.sleep(0.01)
     if x == 1 :
         GPIO.output(cat,1)
         GPIO.output(aa, 0)
@@ -133,3 +130,54 @@ def ssd_number(x,y) :
     if y == "l" :
         GPIO.output(cat, 1)
 
+def ssd_letter(x,y) :
+    if x == " " :
+        GPIO.output(cat,1)
+        GPIO.output(aa, 0)
+        GPIO.output(ab, 0)
+        GPIO.output(ac, 0)
+        GPIO.output(ad, 0)
+        GPIO.output(ae, 0)
+        GPIO.output(af, 0)
+        GPIO.output(ag, 0)
+    if x == "h" :
+        GPIO.output(cat,1)
+        GPIO.output(aa, 0)
+        GPIO.output(ab, 1)
+        GPIO.output(ac, 1)
+        GPIO.output(ad, 0)
+        GPIO.output(ae, 1)
+        GPIO.output(af, 1)
+        GPIO.output(ag, 1)
+    if x == "e" :
+        GPIO.output(cat,1)
+        GPIO.output(aa, 1)
+        GPIO.output(ab, 0)
+        GPIO.output(ac, 0)
+        GPIO.output(ad, 1)
+        GPIO.output(ae, 1)
+        GPIO.output(af, 1)
+        GPIO.output(ag, 1)
+    if x == "l" :
+        GPIO.output(cat,1)
+        GPIO.output(aa, 0)
+        GPIO.output(ab, 0)
+        GPIO.output(ac, 0)
+        GPIO.output(ad, 1)
+        GPIO.output(ae, 1)
+        GPIO.output(af, 1)
+        GPIO.output(ag, 0)
+    if x == "o" :
+        GPIO.output(cat,1)
+        GPIO.output(aa, 1)
+        GPIO.output(ab, 1)
+        GPIO.output(ac, 1)
+        GPIO.output(ad, 1)
+        GPIO.output(ae, 1)
+        GPIO.output(af, 1)
+        GPIO.output(ag, 0)
+    
+    if y == "r" :
+        GPIO.output(cat, 0)
+    if y == "l" :
+        GPIO.output(cat, 1)
